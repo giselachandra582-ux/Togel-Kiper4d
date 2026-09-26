@@ -17,55 +17,102 @@ body {
     color: #fff;
     min-height: 100vh;
     padding: 20px;
-    background: #0a0e27;
+    background: #0a0620;
     background-image: 
-        radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.25) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(96, 165, 250, 0.10) 0%, transparent 50%),
-        radial-gradient(ellipse at 0% 0%, rgba(251, 191, 36, 0.05) 0%, transparent 30%),
-        radial-gradient(ellipse at 100% 100%, rgba(251, 191, 36, 0.05) 0%, transparent 30%),
-        repeating-linear-gradient(45deg, 
-            rgba(255,255,255,0.01) 0px, 
-            rgba(255,255,255,0.01) 2px, 
-            rgba(255,255,255,0.02) 2px, 
-            rgba(255,255,255,0.02) 4px
-        );
+        radial-gradient(ellipse at 15% 20%, rgba(168, 85, 247, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(59, 130, 246, 0.30) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 85%, rgba(236, 72, 153, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 5% 90%, rgba(251, 191, 36, 0.15) 0%, transparent 45%),
+        radial-gradient(ellipse at 95% 80%, rgba(34, 211, 238, 0.15) 0%, transparent 45%),
+        linear-gradient(180deg, #0a0620 0%, #0d0a2e 40%, #100a35 70%, #0a0620 100%);
     position: relative;
+    overflow-x: hidden;
 }
 
 body::before {
     content: '';
     position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    inset: 0;
     background: 
-        radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 70% 60%, rgba(37, 99, 235, 0.06) 0%, transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(96, 165, 250, 0.05) 0%, transparent 30%);
+        radial-gradient(circle at 25% 35%, rgba(168, 85, 247, 0.10) 0%, transparent 45%),
+        radial-gradient(circle at 75% 55%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.06) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
+    animation: bgPulse 12s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
 }
 
 body::after {
     content: '';
     position: fixed;
-    top: 10%;
-    right: 5%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+    top: 8%;
+    right: 4%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(59, 130, 246, 0.10) 40%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
-    animation: floatOrb 20s ease-in-out infinite;
+    animation: floatOrb 22s ease-in-out infinite;
+    filter: blur(20px);
 }
 
 @keyframes floatOrb {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-30px, 20px) scale(1.1); }
-    66% { transform: translate(20px, -30px) scale(0.9); }
+    33% { transform: translate(-40px, 30px) scale(1.15); }
+    66% { transform: translate(30px, -40px) scale(0.9); }
+}
+
+/* ORB TAMBAHAN */
+.orb-extra {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(30px);
+    opacity: 0.65;
+}
+
+.orb-extra.o1 {
+    top: 60%;
+    left: -100px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.35) 0%, transparent 70%);
+    animation: floatOrb2 18s ease-in-out infinite;
+}
+
+.orb-extra.o2 {
+    top: 30%;
+    left: 40%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, transparent 70%);
+    animation: floatOrb2 25s ease-in-out infinite reverse;
+}
+
+.orb-extra.o3 {
+    bottom: 10%;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, transparent 70%);
+    animation: floatOrb3 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(80px, -60px) scale(1.2); }
+}
+
+@keyframes floatOrb3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-70px, -50px) scale(1.15); }
 }
 
 .container {
@@ -82,7 +129,7 @@ body::after {
 
 .logo img {
     max-width: 160px;
-    filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.2));
+    filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
 }
 
 /* ===== HEADER ===== */
@@ -113,24 +160,28 @@ body::after {
     background: linear-gradient(135deg, #fbbf24, #d4af37);
     color: #0a0e27;
     border-color: #fbbf24;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
 }
 
 .btn-gold:hover {
-    background: #fff;
+    background: linear-gradient(135deg, #fde68a, #fbbf24);
     color: #0a0e27;
-    box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+    transform: translateY(-2px);
 }
 
 .btn-red {
     background: linear-gradient(135deg, #ef4444, #b91c1c);
     color: #fff;
     border-color: #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
 }
 
 .btn-red:hover {
-    background: #fff;
-    color: #b91c1c;
-    box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
+    background: linear-gradient(135deg, #f87171, #ef4444);
+    color: #fff;
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+    transform: translateY(-2px);
 }
 
 .judul {
@@ -141,31 +192,32 @@ body::after {
     flex: 1;
     margin: 0;
     letter-spacing: 1px;
-    text-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
+    text-shadow: 0 0 30px rgba(251, 191, 36, 0.4), 0 0 60px rgba(168, 85, 247, 0.3);
 }
 
 .info {
     text-align: center;
     font-size: 13px;
-    color: #8a8a9a;
+    color: #a8a8c8;
     margin-bottom: 6px;
 }
 
 .info .highlight {
     color: #fbbf24;
     font-weight: 600;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
 }
 
 /* ===== MARQUEE PROMO (DI ATAS SLIDER) ===== */
 .marquee-promo {
     margin-bottom: 12px;
-    background: rgba(10, 14, 39, 0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(59, 130, 246, 0.1);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(59, 130, 246, 0.15));
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(168, 85, 247, 0.3);
     border-radius: 8px;
     padding: 14px 0;
     overflow: hidden;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 40px rgba(168, 85, 247, 0.15), inset 0 0 30px rgba(59, 130, 246, 0.05);
     position: relative;
 }
 
@@ -182,6 +234,7 @@ body::after {
 .marquee-promo .track .text-white {
     color: #ffffff;
     padding-right: 60px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
 }
 
 .marquee-promo .track .spacer {
@@ -202,8 +255,8 @@ body::after {
     margin: 0 auto 18px auto;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(59, 130, 246, 0.15);
-    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 0 8px 50px rgba(0,0,0,0.5), 0 0 60px rgba(168, 85, 247, 0.15);
     aspect-ratio: 654 / 216;
 }
 
@@ -234,7 +287,7 @@ body::after {
     background: rgba(10, 14, 39, 0.7);
     backdrop-filter: blur(5px);
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(251, 191, 36, 0.3);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -250,6 +303,7 @@ body::after {
 .slider-arrow:hover {
     background: rgba(251, 191, 36, 0.3);
     border-color: #fbbf24;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.6);
 }
 
 .slider-arrow.prev {
@@ -268,25 +322,47 @@ body::after {
     margin-top: 10px;
 }
 
-/* ===== KARTU PREDIKSI - SEMUA SAMA RATA ===== */
+/* ===== KARTU PREDIKSI ===== */
 .card-wrapper {
-    background: linear-gradient(145deg, rgba(10, 14, 39, 0.9), rgba(20, 30, 60, 0.9));
-    backdrop-filter: blur(10px);
+    background: linear-gradient(145deg, rgba(20, 15, 50, 0.95), rgba(30, 20, 70, 0.95));
+    backdrop-filter: blur(15px);
     border-radius: 12px;
-    border: 1px solid rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 0 30px rgba(168, 85, 247, 0.05);
     display: flex;
     flex-direction: column;
     height: 100%;
     min-height: 440px;
+    position: relative;
+}
+
+.card-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        transparent 0%, 
+        rgba(168, 85, 247, 0.08) 30%, 
+        transparent 60%, 
+        rgba(59, 130, 246, 0.06) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.card-wrapper:hover::before {
+    opacity: 1;
 }
 
 .card-wrapper:hover {
-    border-color: rgba(251, 191, 36, 0.25);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 60px rgba(59, 130, 246, 0.05);
+    border-color: rgba(251, 191, 36, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 
+        0 8px 40px rgba(0,0,0,0.5), 
+        0 0 60px rgba(168, 85, 247, 0.25),
+        0 0 100px rgba(251, 191, 36, 0.1);
 }
 
 .card {
@@ -296,6 +372,8 @@ body::after {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    z-index: 1;
 }
 
 .card .nama {
@@ -304,6 +382,7 @@ body::after {
     color: #fbbf24;
     letter-spacing: 0.5px;
     margin-bottom: 4px;
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
 }
 
 .card .nama .flag {
@@ -319,10 +398,12 @@ body::after {
 
 .card .label-tutup.buka {
     color: #44ff88;
+    text-shadow: 0 0 15px rgba(68, 255, 136, 0.5);
 }
 
 .card .label-tutup.tutup {
     color: #ef4444;
+    text-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
 }
 
 .card .angka-4d {
@@ -331,13 +412,20 @@ body::after {
     color: #ffffff;
     letter-spacing: 3px;
     margin: 2px 0;
-    text-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+    text-shadow: 
+        0 0 15px rgba(168, 85, 247, 0.6),
+        0 0 30px rgba(59, 130, 246, 0.4),
+        0 0 45px rgba(251, 191, 36, 0.2);
+    background: linear-gradient(180deg, #ffffff 0%, #e0e7ff 60%, #c7d2fe 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .card .angka-3d {
     font-size: 15px;
     font-weight: 600;
-    color: #8a8a9a;
+    color: #a8a8d8;
     letter-spacing: 2px;
     margin: 1px 0;
 }
@@ -345,7 +433,7 @@ body::after {
 .card .angka-2d {
     font-size: 14px;
     font-weight: 600;
-    color: #6a6a7a;
+    color: #8a8ab0;
     letter-spacing: 2px;
     margin: 1px 0;
 }
@@ -355,12 +443,13 @@ body::after {
     font-weight: 600;
     color: #fbbf24;
     margin: 2px 0;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
 }
 
 .card .extra-detail {
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid rgba(59, 130, 246, 0.08);
+    border-top: 1px solid rgba(168, 85, 247, 0.15);
     font-size: 12px;
     line-height: 1.8;
     text-align: left;
@@ -373,7 +462,7 @@ body::after {
 }
 
 .card .extra-detail .label {
-    color: #6a6a7a;
+    color: #8a8ab0;
 }
 
 .card .extra-detail .value {
@@ -383,7 +472,7 @@ body::after {
 
 .card .jam {
     font-size: 11px;
-    color: #5a5a6a;
+    color: #6a6a8a;
     margin-top: 2px;
 }
 
@@ -399,14 +488,14 @@ body::after {
 .marquee-link {
     margin-top: 30px;
     margin-bottom: 10px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.25));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.30), rgba(59, 130, 246, 0.30));
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(168, 85, 247, 0.4);
     border-radius: 8px;
     padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
-    box-shadow: 0 4px 30px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 40px rgba(168, 85, 247, 0.25);
 }
 
 .marquee-link .track-link {
@@ -424,17 +513,18 @@ body::after {
     transition: all 0.3s ease;
     padding: 4px 10px;
     border-radius: 4px;
-    border: 1px solid rgba(251, 191, 36, 0.25);
+    border: 1px solid rgba(251, 191, 36, 0.35);
 }
 
 .marquee-link .link-item:hover {
     color: #ffffff;
-    background: rgba(251, 191, 36, 0.15);
-    text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+    background: rgba(251, 191, 36, 0.2);
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
 }
 
 .marquee-link .link-spacer {
-    color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.4);
     font-weight: 300;
 }
 
@@ -446,13 +536,13 @@ body::after {
 /* ===== JADWAL PASARAN SECTION ===== */
 .jadwal-section {
     margin-top: 10px;
-    background: rgba(10, 14, 39, 0.85);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(145deg, rgba(20, 15, 50, 0.9), rgba(30, 20, 70, 0.9));
+    backdrop-filter: blur(15px);
     border-radius: 12px;
-    border: 1px solid rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     overflow: hidden;
     padding: 16px 14px;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.3), inset 0 0 30px rgba(168, 85, 247, 0.05);
 }
 
 .jadwal-section .title {
@@ -462,6 +552,7 @@ body::after {
     text-align: center;
     margin-bottom: 12px;
     letter-spacing: 1px;
+    text-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
 }
 
 .jadwal-section .title span {
@@ -477,9 +568,9 @@ body::after {
 .jadwal-table th {
     text-align: left;
     padding: 8px 6px;
-    color: #8a8a9a;
+    color: #a8a8c8;
     font-weight: 600;
-    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -487,7 +578,7 @@ body::after {
 
 .jadwal-table td {
     padding: 8px 6px;
-    border-bottom: 1px solid rgba(59, 130, 246, 0.05);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.08);
     color: #cbd5e1;
 }
 
@@ -503,11 +594,13 @@ body::after {
 .jadwal-table .status-buka {
     color: #44ff88;
     font-weight: 600;
+    text-shadow: 0 0 10px rgba(68, 255, 136, 0.4);
 }
 
 .jadwal-table .status-tutup {
     color: #ef4444;
     font-weight: 600;
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -556,6 +649,11 @@ body::after {
 </head>
 <body>
 
+<!-- ORB TAMBAHAN UNTUK BACKGROUND -->
+<div class="orb-extra o1"></div>
+<div class="orb-extra o2"></div>
+<div class="orb-extra o3"></div>
+
 <div class="container">
 
 <div class="logo">
@@ -577,7 +675,7 @@ body::after {
 <div class="info" id="infoTanggal">📅 Tanggal: <span class="highlight" id="tglDisplay">--</span></div>
 <div class="info">✅ Prediksi diperbarui otomatis setiap pergantian hari</div>
 
-<!-- ===== MARQUEE PROMO (DI ATAS SLIDER) ===== -->
+<!-- ===== MARQUEE PROMO ===== -->
 <div class="marquee-promo">
     <div class="track">
         <span class="text-white">^_^ SELAMAT DATANG DI KIPER4D SITUS SLOT &amp; BETING BOLA TERLENGKAP DAN AKURAT PREDIKSI BOLA &amp; PREDIKSI TOGEL TERUPDATE SETIAP HARINYA SLOT GACOR RTP 98% PREDIKSI TERAKURAT 98% JAMINAN AMAN &amp; TERPERCAYA SE-ASIA 100% ^_^ </span>
@@ -613,7 +711,7 @@ body::after {
     <!-- akan diisi JavaScript -->
 </div>
 
-<!-- ===== MARQUEE LINK (SEBELUM JADWAL PASARAN) ===== -->
+<!-- ===== MARQUEE LINK ===== -->
 <div class="marquee-link">
     <div class="track-link">
         <a href="https://kiper4djago.org/Home/Promo" target="_blank" class="link-item">🎁 PROMO KIPER4D</a>
@@ -681,13 +779,8 @@ function goToSlide(index) {
     sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-function nextSlide() {
-    goToSlide(currentIndex + 1);
-}
-
-function prevSlide() {
-    goToSlide(currentIndex - 1);
-}
+function nextSlide() { goToSlide(currentIndex + 1); }
+function prevSlide() { goToSlide(currentIndex - 1); }
 
 function startSlider() {
     if (slideInterval) clearInterval(slideInterval);
@@ -701,120 +794,138 @@ function stopSlider() {
     }
 }
 
-// Event listeners untuk tombol
-prevBtn.addEventListener('click', () => {
-    stopSlider();
-    prevSlide();
-    startSlider();
-});
+prevBtn.addEventListener('click', () => { stopSlider(); prevSlide(); startSlider(); });
+nextBtn.addEventListener('click', () => { stopSlider(); nextSlide(); startSlider(); });
 
-nextBtn.addEventListener('click', () => {
-    stopSlider();
-    nextSlide();
-    startSlider();
-});
-
-// Hover pause
 const sliderContainer = document.querySelector('.slider-container');
 sliderContainer.addEventListener('mouseenter', stopSlider);
 sliderContainer.addEventListener('mouseleave', startSlider);
 
-// Start slider
 startSlider();
 
 // ============================================================
-// DATA PASARAN - JADWAL BUKA TERBARU
+// DATA PASARAN
 // ============================================================
 const pasaran = [
     { 
         id: 'sy', nama: 'SYDNEY', flag: '🇦🇺', 
         buka: '14:20', tutup: '11:20', result: '14:00',
-        hariBuka: [1,2,3,4,5,6,7], // Setiap Hari
+        hariBuka: [1,2,3,4,5,6,7],
         jadwal: 'Setiap Hari'
     },
     { 
         id: 'hk', nama: 'HONGKONG', flag: '🇭🇰', 
         buka: '23:30', tutup: '20:30', result: '23:00',
-        hariBuka: [1,2,3,4,5,6,7], // Setiap Hari
+        hariBuka: [1,2,3,4,5,6,7],
         jadwal: 'Setiap Hari'
     },
     { 
         id: 'sg', nama: 'SINGAPORE', flag: '🇸🇬', 
         buka: '18:20', tutup: '17:15', result: '17:45',
-        hariBuka: [1,3,4,6,7], // Min, Sen, Rab, Kam, Sab
+        hariBuka: [1,3,4,6,7],
         jadwal: 'Min, Sen, Rab, Kam, Sab'
     },
     { 
         id: 'sgp4d', nama: 'SGP 4D', flag: '💎', 
         buka: '18:20', tutup: '17:15', result: '17:45',
-        hariBuka: [3,6,7], // Min, Rab, Sab
+        hariBuka: [3,6,7],
         jadwal: 'Min, Rab, Sab'
     },
     { 
         id: 'mg', nama: 'MAGNUM4D', flag: '🇲🇾', 
         buka: '19:30', tutup: '18:10', result: '19:00',
-        hariBuka: [3,6,7], // Min, Rab, Sab
+        hariBuka: [3,6,7],
         jadwal: 'Min, Rab, Sab'
     },
     { 
         id: 'dmc', nama: 'DAMACAI', flag: '🇲🇾', 
         buka: '19:30', tutup: '17:30', result: '19:00',
-        hariBuka: [3,6,7], // Min, Rab, Sab
+        hariBuka: [3,6,7],
         jadwal: 'Min, Rab, Sab'
     },
     { 
         id: 'bs', nama: 'BULLSEYE', flag: '🎯', 
         buka: '13:40', tutup: '11:30', result: '13:15',
-        hariBuka: [1,2,3,4,5,6,7], // Setiap Hari
+        hariBuka: [1,2,3,4,5,6,7],
         jadwal: 'Setiap Hari'
     },
     { 
         id: 'st', nama: 'SPORT TOTO', flag: '🔮', 
         buka: '19:00', tutup: '17:00', result: '19:00',
-        hariBuka: [3,6,7], // Min, Rab, Sab
+        hariBuka: [3,6,7],
         jadwal: 'Min, Rab, Sab'
     }
 ];
 
-const hariIndo = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
 const shioList = ['Tikus', 'Kerbau', 'Macan', 'Kelinci', 'Naga', 'Ular', 'Kuda', 'Kambing', 'Monyet', 'Ayam', 'Anjing', 'Babi'];
 
 // ============================================================
-// CEK STATUS BUKA/TUTUP - BERDASARKAN HARI SAJA
+// CEK STATUS BUKA/TUTUP - BERDASARKAN HARI
 // ============================================================
 function cekStatusPasaran(p) {
     const now = new Date();
-    const hariIni = now.getDay(); // 0=Min, 1=Sen, 2=Sel, dst
-    
-    // Konversi: Minggu (0) -> 7, Senin (1) -> 1, Selasa (2) -> 2, dst
+    const hariIni = now.getDay();
     const hariIndex = hariIni === 0 ? 7 : hariIni;
-    
-    // Cek apakah hari ini termasuk jadwal buka
     const isHariBuka = p.hariBuka.includes(hariIndex);
-    
-    // Jika hari ini masuk jadwal buka -> BUKA, selain itu -> TUTUP
     return isHariBuka ? 'BUKA' : 'TUTUP';
 }
 
 // ============================================================
-// GENERATE ANGKA & SHIO UNIK (BERUBAH TIAP HARI)
+// RANDOM SEED - PAKAI CRYPTO UNTUK ACak BENAR-BENAR
 // ============================================================
-function getAngka(seed) {
-    let x = Math.sin(seed) * 10000;
-    let a = Math.floor((x - Math.floor(x)) * 10);
-    let b = Math.floor((x * 10 - Math.floor(x * 10)) * 10);
-    let c = Math.floor((x * 100 - Math.floor(x * 100)) * 10);
-    let d = Math.floor((x * 1000 - Math.floor(x * 1000)) * 10);
-    return [a, b, c, d];
+// Seed disimpan per hari, jadi angka konsisten 1 hari tapi acak antar pasaran
+let dailySeed = 0;
+let currentSeedDate = '';
+
+function generateDailySeed() {
+    const today = new Date().toISOString().slice(0, 10);
+    if (currentSeedDate === today) return dailySeed;
+    
+    // Generate random seed dari crypto untuk hari ini
+    const randomBuffer = new Uint32Array(1);
+    crypto.getRandomValues(randomBuffer);
+    dailySeed = randomBuffer[0];
+    currentSeedDate = today;
+    
+    console.log(`🎲 Seed baru untuk ${today}: ${dailySeed}`);
+    return dailySeed;
 }
 
-function generatePrediksi(k) {
-    let now = new Date();
-    let tgl = now.getFullYear() + 
-              String(now.getMonth() + 1).padStart(2, '0') + 
-              String(now.getDate()).padStart(2, '0');
-    let seed = parseInt(tgl) + k;
-    return getAngka(seed);
+// Pseudo-random generator dengan seed harian + index pasaran
+// Menggunakan mulberry32 - cepat & distribusi bagus
+function mulberry32(seed) {
+    return function() {
+        seed |= 0;
+        seed = seed + 0x6D2B79F5 | 0;
+        let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+}
+
+// ============================================================
+// GENERATE ANGKA 4D YANG BENAR-BENAR ACAK
+// ============================================================
+function generateAngka4D(pasaranIndex) {
+    // Pakai seed harian + kombinasi id pasaran
+    const baseSeed = generateDailySeed();
+    const seed = baseSeed ^ (pasaranIndex * 0x9E3779B9); // XOR dengan golden ratio hash
+    const rng = mulberry32(seed);
+    
+    // Generate 4 digit berbeda (boleh ada yang sama, itu wajar di togel)
+    const digits = [];
+    for (let i = 0; i < 4; i++) {
+        digits.push(Math.floor(rng() * 10));
+    }
+    return digits;
+}
+
+function generateShio(pasaranIndex) {
+    const baseSeed = generateDailySeed();
+    const seed = baseSeed ^ (pasaranIndex * 0x85EBCA6B);
+    const rng = mulberry32(seed);
+    const shioIndex = Math.floor(rng() * 12);
+    return shioList[shioIndex];
 }
 
 // ============================================================
@@ -824,24 +935,13 @@ function renderCards() {
     const grid = document.getElementById('prediksiGrid');
     grid.innerHTML = '';
 
-    const today = new Date().getDay();
-    const now = new Date();
-    const tgl = now.getFullYear() + 
-                String(now.getMonth() + 1).padStart(2, '0') + 
-                String(now.getDate()).padStart(2, '0');
-    const seedBase = parseInt(tgl);
-
     pasaran.forEach((p, index) => {
-        const angka = generatePrediksi(index + 1);
+        const angka = generateAngka4D(index);
         const angka4d = angka.join(' ');
         const angka3d = angka.slice(1).join(' ');
         const angka2d = angka.slice(2).join(' ');
-        
-        const shioSeed = seedBase + index * 7 + 3;
-        const shioIndex = (Math.floor(Math.sin(shioSeed) * 10000) % 12 + 12) % 12;
-        const shio = shioList[shioIndex];
+        const shio = generateShio(index);
 
-        // Cek status berdasarkan HARI
         const status = cekStatusPasaran(p);
         const isOpen = status === 'BUKA';
         const statusText = isOpen ? '🟢 BUKA' : '🔴 TUTUP';
@@ -908,7 +1008,7 @@ function renderJadwal() {
 }
 
 // ============================================================
-// UPDATE JAM & TANGGAL - BERJALAN NORMAL SETIAP DETIK
+// UPDATE JAM & TANGGAL
 // ============================================================
 function updateTime() {
     const now = new Date();
@@ -932,47 +1032,39 @@ let lastDate = new Date().toISOString().slice(0,10);
 function checkDayChange() {
     const today = new Date().toISOString().slice(0,10);
     if (today !== lastDate) {
-        console.log('🔄 Hari berganti! Refresh prediksi...');
+        console.log('🔄 Hari berganti! Refresh prediksi dengan angka baru...');
         console.log('📅 Hari ini:', new Date().toLocaleDateString('id-ID', { weekday: 'long' }));
         lastDate = today;
+        // Reset seed agar angka baru di-generate
+        currentSeedDate = '';
+        generateDailySeed();
         renderCards();
         renderJadwal();
     }
 }
 
 // ============================================================
-// REFRESH MANUAL
-// ============================================================
-function refreshAll() {
-    console.log('🔄 Refresh manual dipanggil');
-    renderCards();
-    renderJadwal();
-}
-
-// ============================================================
 // INIT
 // ============================================================
+generateDailySeed(); // Generate seed untuk hari ini
 renderCards();
 renderJadwal();
 updateTime();
 
-// UPDATE JAM SETIAP DETIK (1000ms) - DETIK BERJALAN NORMAL
+// UPDATE JAM SETIAP DETIK
 setInterval(updateTime, 1000);
 
 // Cek perubahan hari setiap 30 detik
 setInterval(checkDayChange, 30000);
 
-// Refresh status setiap 1 menit
+// Refresh status setiap 1 menit (BUKA/TUTUP) - angka tetap sama karena seed harian
 setInterval(() => {
     renderCards();
     renderJadwal();
 }, 60000);
 
-// Refresh setiap jam (jaga-jaga)
-setInterval(refreshAll, 3600000);
-
-console.log('✅ Prediksi akan refresh otomatis setiap pergantian hari');
-console.log('✅ Status BUKA/TUTUP berdasarkan HARI');
+console.log('✅ Angka prediksi di-generate acak dari crypto seed harian');
+console.log('✅ Angka konsisten 1 hari, berubah otomatis saat ganti hari');
 console.log('📅 Tanggal saat ini:', new Date().toISOString().slice(0,10));
 console.log('📅 Hari ini:', new Date().toLocaleDateString('id-ID', { weekday: 'long' }));
 </script>
