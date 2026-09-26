@@ -17,12 +17,12 @@ body {
     color: #fff;
     min-height: 100vh;
     padding: 20px;
-    background: #050510;
+    background: #0a0620;
     position: relative;
     overflow-x: hidden;
 }
 
-/* ===== BACKGROUND MEWAH: ROYAL BLUE + GOLD ===== */
+/* ===== BACKGROUND 3 WARNA BERGERAK TERUS ===== */
 body::before {
     content: '';
     position: fixed;
@@ -30,19 +30,17 @@ body::before {
     z-index: -2;
     background: linear-gradient(
         135deg,
-        #050510 0%,
-        #0a1230 12%,
-        #1e3a8a 28%,
-        #3b82f6 42%,
-        #d4af37 55%,
-        #fbbf24 62%,
-        #d4af37 70%,
-        #3b82f6 82%,
-        #1e3a8a 92%,
-        #050510 100%
+        #0a0620 0%,
+        #6d28d9 20%,
+        #8b5cf6 35%,
+        #22d3ee 50%,
+        #fbbf24 65%,
+        #8b5cf6 80%,
+        #6d28d9 92%,
+        #0a0620 100%
     );
     background-size: 400% 400%;
-    animation: gradientMove 22s ease infinite;
+    animation: gradientMove 15s ease infinite;
 }
 
 @keyframes gradientMove {
@@ -51,23 +49,23 @@ body::before {
     100% { background-position: 0% 50%; }
 }
 
-/* Lapisan gelap supaya teks kebaca & tetap elegan */
+/* Lapisan gelap supaya teks kebaca & elegan */
 body::after {
     content: '';
     position: fixed;
     inset: 0;
     z-index: -1;
     background: 
-        radial-gradient(circle at 20% 20%, rgba(5, 5, 16, 0.75) 0%, transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(5, 5, 16, 0.75) 0%, transparent 55%),
+        radial-gradient(circle at 20% 20%, rgba(10, 6, 32, 0.65) 0%, transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(10, 6, 32, 0.65) 0%, transparent 55%),
         linear-gradient(180deg, 
-            rgba(5, 5, 16, 0.85) 0%, 
-            rgba(5, 5, 16, 0.65) 50%, 
-            rgba(5, 5, 16, 0.85) 100%);
+            rgba(10, 6, 32, 0.75) 0%, 
+            rgba(10, 6, 32, 0.55) 50%, 
+            rgba(10, 6, 32, 0.75) 100%);
     pointer-events: none;
 }
 
-/* GOLD LINE BERJALAN DI ATAS */
+/* GOLD LINE ATAS BERJALAN */
 .gold-line {
     position: fixed;
     top: 0;
@@ -77,13 +75,16 @@ body::after {
     z-index: 10;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        #d4af37 25%, 
+        #22d3ee 25%, 
         #fbbf24 50%, 
-        #d4af37 75%, 
+        #8b5cf6 75%, 
         transparent 100%);
     background-size: 200% auto;
     animation: goldShine 4s linear infinite;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.9), 0 0 40px rgba(251, 191, 36, 0.5);
+    box-shadow: 
+        0 0 20px rgba(34, 211, 238, 0.9), 
+        0 0 40px rgba(139, 92, 246, 0.6),
+        0 0 60px rgba(251, 191, 36, 0.4);
 }
 
 @keyframes goldShine {
@@ -105,7 +106,7 @@ body::after {
 
 .logo img {
     max-width: 160px;
-    filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
+    filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.9)) drop-shadow(0 0 20px rgba(34, 211, 238, 0.6));
 }
 
 /* ===== HEADER ===== */
@@ -134,14 +135,14 @@ body::after {
 
 .btn-gold {
     background: linear-gradient(135deg, #fbbf24, #d4af37);
-    color: #050510;
+    color: #0a0620;
     border-color: #fbbf24;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
 }
 
 .btn-gold:hover {
     background: linear-gradient(135deg, #fff, #fbbf24);
-    color: #050510;
+    color: #0a0620;
     box-shadow: 0 0 50px rgba(251, 191, 36, 0.9);
     transform: translateY(-2px);
 }
@@ -170,14 +171,14 @@ body::after {
     letter-spacing: 1px;
     text-shadow: 
         0 0 20px rgba(251, 191, 36, 0.9),
-        0 0 40px rgba(212, 175, 55, 0.6),
-        0 0 60px rgba(59, 130, 246, 0.4);
+        0 0 40px rgba(139, 92, 246, 0.7),
+        0 0 60px rgba(34, 211, 238, 0.5);
 }
 
 .info {
     text-align: center;
     font-size: 13px;
-    color: #cbd5e1;
+    color: #d8d4f0;
     margin-bottom: 6px;
 }
 
@@ -190,15 +191,15 @@ body::after {
 /* ===== MARQUEE PROMO ===== */
 .marquee-promo {
     margin-bottom: 12px;
-    background: rgba(5, 10, 35, 0.75);
+    background: rgba(20, 10, 50, 0.70);
     backdrop-filter: blur(15px);
-    border: 1.5px solid rgba(212, 175, 55, 0.5);
+    border: 1.5px solid rgba(139, 92, 246, 0.6);
     border-radius: 8px;
     padding: 14px 0;
     overflow: hidden;
     box-shadow: 
-        0 4px 40px rgba(212, 175, 55, 0.25), 
-        0 0 60px rgba(30, 58, 138, 0.3);
+        0 4px 40px rgba(139, 92, 246, 0.35), 
+        0 0 60px rgba(34, 211, 238, 0.25);
     position: relative;
 }
 
@@ -216,8 +217,8 @@ body::after {
     color: #ffffff;
     padding-right: 60px;
     text-shadow: 
-        0 0 10px rgba(251, 191, 36, 0.9),
-        0 0 20px rgba(212, 175, 55, 0.6);
+        0 0 10px rgba(34, 211, 238, 0.9),
+        0 0 20px rgba(139, 92, 246, 0.6);
 }
 
 .marquee-promo .track .spacer {
@@ -238,11 +239,11 @@ body::after {
     margin: 0 auto 18px auto;
     border-radius: 12px;
     overflow: hidden;
-    border: 2px solid rgba(212, 175, 55, 0.7);
+    border: 2px solid rgba(139, 92, 246, 0.7);
     box-shadow: 
-        0 8px 60px rgba(0,0,0,0.6), 
-        0 0 80px rgba(212, 175, 55, 0.4),
-        0 0 120px rgba(59, 130, 246, 0.25);
+        0 8px 60px rgba(0,0,0,0.5), 
+        0 0 80px rgba(139, 92, 246, 0.5),
+        0 0 120px rgba(34, 211, 238, 0.3);
     aspect-ratio: 654 / 216;
 }
 
@@ -270,10 +271,10 @@ body::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(5, 5, 16, 0.85);
+    background: rgba(10, 6, 32, 0.85);
     backdrop-filter: blur(5px);
     color: #fff;
-    border: 1.5px solid rgba(212, 175, 55, 0.7);
+    border: 1.5px solid rgba(251, 191, 36, 0.7);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -287,7 +288,7 @@ body::after {
 }
 
 .slider-arrow:hover {
-    background: rgba(212, 175, 55, 0.5);
+    background: rgba(251, 191, 36, 0.5);
     border-color: #fbbf24;
     box-shadow: 0 0 30px rgba(251, 191, 36, 0.9);
 }
@@ -308,18 +309,18 @@ body::after {
     margin-top: 10px;
 }
 
-/* ===== KARTU PREDIKSI - ROYAL BLUE + GOLD ===== */
+/* ===== KARTU PREDIKSI ===== */
 .card-wrapper {
-    background: linear-gradient(145deg, rgba(10, 18, 48, 0.95), rgba(30, 58, 138, 0.92));
+    background: linear-gradient(145deg, rgba(30, 15, 70, 0.92), rgba(45, 20, 95, 0.92));
     backdrop-filter: blur(15px);
     border-radius: 12px;
-    border: 1.5px solid rgba(212, 175, 55, 0.5);
+    border: 1.5px solid rgba(139, 92, 246, 0.6);
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 
-        0 4px 25px rgba(0,0,0,0.45), 
-        0 0 40px rgba(212, 175, 55, 0.2),
-        inset 0 0 40px rgba(30, 58, 138, 0.3);
+        0 4px 25px rgba(0,0,0,0.4), 
+        0 0 40px rgba(139, 92, 246, 0.3),
+        inset 0 0 40px rgba(139, 92, 246, 0.12);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -333,9 +334,9 @@ body::after {
     inset: 0;
     background: linear-gradient(135deg, 
         transparent 0%, 
-        rgba(251, 191, 36, 0.12) 30%, 
+        rgba(34, 211, 238, 0.15) 30%, 
         transparent 60%, 
-        rgba(212, 175, 55, 0.10) 100%);
+        rgba(251, 191, 36, 0.12) 100%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.4s;
@@ -349,10 +350,10 @@ body::after {
     border-color: rgba(251, 191, 36, 0.95);
     transform: translateY(-5px);
     box-shadow: 
-        0 10px 50px rgba(0,0,0,0.6), 
-        0 0 70px rgba(212, 175, 55, 0.5),
-        0 0 110px rgba(59, 130, 246, 0.4),
-        0 0 150px rgba(251, 191, 36, 0.2);
+        0 10px 50px rgba(0,0,0,0.5), 
+        0 0 70px rgba(139, 92, 246, 0.6),
+        0 0 110px rgba(34, 211, 238, 0.4),
+        0 0 150px rgba(251, 191, 36, 0.3);
 }
 
 .card {
@@ -374,7 +375,7 @@ body::after {
     margin-bottom: 4px;
     text-shadow: 
         0 0 15px rgba(251, 191, 36, 0.9),
-        0 0 30px rgba(212, 175, 55, 0.5);
+        0 0 30px rgba(139, 92, 246, 0.5);
 }
 
 .card .nama .flag {
@@ -403,29 +404,29 @@ body::after {
     font-weight: 900;
     letter-spacing: 3px;
     margin: 2px 0;
-    background: linear-gradient(180deg, #ffffff 0%, #fef3c7 35%, #fbbf24 70%, #d4af37 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #a5f3fc 40%, #22d3ee 70%, #0891b2 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+    filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.9)) drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
 }
 
 .card .angka-3d {
     font-size: 15px;
     font-weight: 700;
-    color: #93c5fd;
+    color: #c4b5fd;
     letter-spacing: 2px;
     margin: 1px 0;
-    text-shadow: 0 0 10px rgba(147, 197, 253, 0.7);
+    text-shadow: 0 0 10px rgba(196, 181, 253, 0.7);
 }
 
 .card .angka-2d {
     font-size: 14px;
     font-weight: 700;
-    color: #bfdbfe;
+    color: #a5b4fc;
     letter-spacing: 2px;
     margin: 1px 0;
-    text-shadow: 0 0 10px rgba(191, 219, 254, 0.6);
+    text-shadow: 0 0 10px rgba(165, 180, 252, 0.6);
 }
 
 .card .shio {
@@ -433,13 +434,13 @@ body::after {
     font-weight: 700;
     color: #fbbf24;
     margin: 2px 0;
-    text-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 30px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 30px rgba(139, 92, 246, 0.5);
 }
 
 .card .extra-detail {
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-top: 1px solid rgba(139, 92, 246, 0.3);
     font-size: 12px;
     line-height: 1.8;
     text-align: left;
@@ -452,7 +453,7 @@ body::after {
 }
 
 .card .extra-detail .label {
-    color: #93c5fd;
+    color: #a5b4fc;
 }
 
 .card .extra-detail .value {
@@ -463,7 +464,7 @@ body::after {
 
 .card .jam {
     font-size: 11px;
-    color: #94a3b8;
+    color: #8b8bb0;
     margin-top: 2px;
 }
 
@@ -483,16 +484,16 @@ body::after {
 .marquee-link {
     margin-top: 30px;
     margin-bottom: 10px;
-    background: rgba(5, 10, 35, 0.8);
+    background: rgba(20, 10, 50, 0.75);
     backdrop-filter: blur(15px);
-    border: 1.5px solid rgba(212, 175, 55, 0.5);
+    border: 1.5px solid rgba(139, 92, 246, 0.6);
     border-radius: 8px;
     padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
     box-shadow: 
-        0 4px 50px rgba(212, 175, 55, 0.3),
-        0 0 80px rgba(30, 58, 138, 0.3);
+        0 4px 50px rgba(139, 92, 246, 0.4),
+        0 0 80px rgba(34, 211, 238, 0.25);
 }
 
 .marquee-link .track-link {
@@ -510,12 +511,12 @@ body::after {
     transition: all 0.3s ease;
     padding: 4px 10px;
     border-radius: 4px;
-    border: 1.5px solid rgba(212, 175, 55, 0.6);
+    border: 1.5px solid rgba(251, 191, 36, 0.6);
     text-shadow: 0 0 10px rgba(251, 191, 36, 0.7);
 }
 
 .marquee-link .link-item:hover {
-    color: #050510;
+    color: #0a0620;
     background: #fbbf24;
     text-shadow: none;
     box-shadow: 0 0 30px rgba(251, 191, 36, 0.9);
@@ -534,16 +535,16 @@ body::after {
 /* ===== JADWAL PASARAN SECTION ===== */
 .jadwal-section {
     margin-top: 10px;
-    background: linear-gradient(145deg, rgba(10, 18, 48, 0.95), rgba(30, 58, 138, 0.92));
+    background: linear-gradient(145deg, rgba(30, 15, 70, 0.92), rgba(45, 20, 95, 0.92));
     backdrop-filter: blur(15px);
     border-radius: 12px;
-    border: 1.5px solid rgba(212, 175, 55, 0.5);
+    border: 1.5px solid rgba(139, 92, 246, 0.6);
     overflow: hidden;
     padding: 16px 14px;
     box-shadow: 
-        0 4px 40px rgba(0,0,0,0.45), 
-        0 0 60px rgba(212, 175, 55, 0.25),
-        inset 0 0 40px rgba(30, 58, 138, 0.3);
+        0 4px 40px rgba(0,0,0,0.4), 
+        0 0 60px rgba(139, 92, 246, 0.3),
+        inset 0 0 40px rgba(139, 92, 246, 0.12);
 }
 
 .jadwal-section .title {
@@ -553,7 +554,7 @@ body::after {
     text-align: center;
     margin-bottom: 12px;
     letter-spacing: 1px;
-    text-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 40px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 40px rgba(139, 92, 246, 0.5);
 }
 
 .jadwal-section .title span {
@@ -570,18 +571,18 @@ body::after {
 .jadwal-table th {
     text-align: left;
     padding: 8px 6px;
-    color: #93c5fd;
+    color: #c4b5fd;
     font-weight: 700;
-    border-bottom: 1.5px solid rgba(212, 175, 55, 0.4);
+    border-bottom: 1.5px solid rgba(139, 92, 246, 0.4);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    text-shadow: 0 0 10px rgba(147, 197, 253, 0.5);
+    text-shadow: 0 0 10px rgba(196, 181, 253, 0.5);
 }
 
 .jadwal-table td {
     padding: 8px 6px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.15);
     color: #e0e7ff;
 }
 
@@ -1053,7 +1054,8 @@ setInterval(() => {
     renderJadwal();
 }, 60000);
 
-console.log('👑 Tema Royal Blue + Gold aktif');
+console.log('🌈 Tema 3 warna hidup bergerak aktif');
+console.log('🎨 Warna: Ungu + Cyan + Gold');
 console.log('✅ Angka prediksi acak dari crypto seed harian');
 console.log('📅 Tanggal:', new Date().toISOString().slice(0,10));
 </script>
