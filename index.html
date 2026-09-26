@@ -17,102 +17,78 @@ body {
     color: #fff;
     min-height: 100vh;
     padding: 20px;
-    background: #0a0620;
-    background-image: 
-        radial-gradient(ellipse at 15% 20%, rgba(168, 85, 247, 0.35) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 15%, rgba(59, 130, 246, 0.30) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 85%, rgba(236, 72, 153, 0.22) 0%, transparent 55%),
-        radial-gradient(ellipse at 5% 90%, rgba(251, 191, 36, 0.15) 0%, transparent 45%),
-        radial-gradient(ellipse at 95% 80%, rgba(34, 211, 238, 0.15) 0%, transparent 45%),
-        linear-gradient(180deg, #0a0620 0%, #0d0a2e 40%, #100a35 70%, #0a0620 100%);
+    background: #050510;
     position: relative;
     overflow-x: hidden;
 }
 
+/* ===== BACKGROUND MEWAH: ROYAL BLUE + GOLD ===== */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: 
-        radial-gradient(circle at 25% 35%, rgba(168, 85, 247, 0.10) 0%, transparent 45%),
-        radial-gradient(circle at 75% 55%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.06) 0%, transparent 40%);
-    pointer-events: none;
-    z-index: 0;
-    animation: bgPulse 12s ease-in-out infinite;
+    z-index: -2;
+    background: linear-gradient(
+        135deg,
+        #050510 0%,
+        #0a1230 12%,
+        #1e3a8a 28%,
+        #3b82f6 42%,
+        #d4af37 55%,
+        #fbbf24 62%,
+        #d4af37 70%,
+        #3b82f6 82%,
+        #1e3a8a 92%,
+        #050510 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 22s ease infinite;
 }
 
-@keyframes bgPulse {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
+/* Lapisan gelap supaya teks kebaca & tetap elegan */
 body::after {
     content: '';
     position: fixed;
-    top: 8%;
-    right: 4%;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, rgba(59, 130, 246, 0.10) 40%, transparent 70%);
-    border-radius: 50%;
+    inset: 0;
+    z-index: -1;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(5, 5, 16, 0.75) 0%, transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(5, 5, 16, 0.75) 0%, transparent 55%),
+        linear-gradient(180deg, 
+            rgba(5, 5, 16, 0.85) 0%, 
+            rgba(5, 5, 16, 0.65) 50%, 
+            rgba(5, 5, 16, 0.85) 100%);
     pointer-events: none;
-    z-index: 0;
-    animation: floatOrb 22s ease-in-out infinite;
-    filter: blur(20px);
 }
 
-@keyframes floatOrb {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-40px, 30px) scale(1.15); }
-    66% { transform: translate(30px, -40px) scale(0.9); }
-}
-
-/* ORB TAMBAHAN */
-.orb-extra {
+/* GOLD LINE BERJALAN DI ATAS */
+.gold-line {
     position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    filter: blur(30px);
-    opacity: 0.65;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 10;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #d4af37 25%, 
+        #fbbf24 50%, 
+        #d4af37 75%, 
+        transparent 100%);
+    background-size: 200% auto;
+    animation: goldShine 4s linear infinite;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.9), 0 0 40px rgba(251, 191, 36, 0.5);
 }
 
-.orb-extra.o1 {
-    top: 60%;
-    left: -100px;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.35) 0%, transparent 70%);
-    animation: floatOrb2 18s ease-in-out infinite;
-}
-
-.orb-extra.o2 {
-    top: 30%;
-    left: 40%;
-    width: 280px;
-    height: 280px;
-    background: radial-gradient(circle, rgba(34, 211, 238, 0.25) 0%, transparent 70%);
-    animation: floatOrb2 25s ease-in-out infinite reverse;
-}
-
-.orb-extra.o3 {
-    bottom: 10%;
-    right: -80px;
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, transparent 70%);
-    animation: floatOrb3 20s ease-in-out infinite;
-}
-
-@keyframes floatOrb2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(80px, -60px) scale(1.2); }
-}
-
-@keyframes floatOrb3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-70px, -50px) scale(1.15); }
+@keyframes goldShine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
 .container {
@@ -129,7 +105,7 @@ body::after {
 
 .logo img {
     max-width: 160px;
-    filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+    filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
 }
 
 /* ===== HEADER ===== */
@@ -148,7 +124,7 @@ body::after {
     font-weight: bold;
     text-decoration: none;
     border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -158,29 +134,29 @@ body::after {
 
 .btn-gold {
     background: linear-gradient(135deg, #fbbf24, #d4af37);
-    color: #0a0e27;
+    color: #050510;
     border-color: #fbbf24;
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
 }
 
 .btn-gold:hover {
-    background: linear-gradient(135deg, #fde68a, #fbbf24);
-    color: #0a0e27;
-    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+    background: linear-gradient(135deg, #fff, #fbbf24);
+    color: #050510;
+    box-shadow: 0 0 50px rgba(251, 191, 36, 0.9);
     transform: translateY(-2px);
 }
 
 .btn-red {
-    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    background: linear-gradient(135deg, #dc2626, #991b1b);
     color: #fff;
-    border-color: #ef4444;
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    border-color: #dc2626;
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
 }
 
 .btn-red:hover {
-    background: linear-gradient(135deg, #f87171, #ef4444);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
     color: #fff;
-    box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+    box-shadow: 0 0 50px rgba(220, 38, 38, 0.9);
     transform: translateY(-2px);
 }
 
@@ -192,32 +168,37 @@ body::after {
     flex: 1;
     margin: 0;
     letter-spacing: 1px;
-    text-shadow: 0 0 30px rgba(251, 191, 36, 0.4), 0 0 60px rgba(168, 85, 247, 0.3);
+    text-shadow: 
+        0 0 20px rgba(251, 191, 36, 0.9),
+        0 0 40px rgba(212, 175, 55, 0.6),
+        0 0 60px rgba(59, 130, 246, 0.4);
 }
 
 .info {
     text-align: center;
     font-size: 13px;
-    color: #a8a8c8;
+    color: #cbd5e1;
     margin-bottom: 6px;
 }
 
 .info .highlight {
     color: #fbbf24;
-    font-weight: 600;
-    text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.8);
 }
 
-/* ===== MARQUEE PROMO (DI ATAS SLIDER) ===== */
+/* ===== MARQUEE PROMO ===== */
 .marquee-promo {
     margin-bottom: 12px;
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(59, 130, 246, 0.15));
+    background: rgba(5, 10, 35, 0.75);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(168, 85, 247, 0.3);
+    border: 1.5px solid rgba(212, 175, 55, 0.5);
     border-radius: 8px;
     padding: 14px 0;
     overflow: hidden;
-    box-shadow: 0 4px 40px rgba(168, 85, 247, 0.15), inset 0 0 30px rgba(59, 130, 246, 0.05);
+    box-shadow: 
+        0 4px 40px rgba(212, 175, 55, 0.25), 
+        0 0 60px rgba(30, 58, 138, 0.3);
     position: relative;
 }
 
@@ -225,7 +206,7 @@ body::after {
     display: flex;
     white-space: nowrap;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.5px;
     animation: scrollPromo 40s linear infinite;
     width: max-content;
@@ -234,7 +215,9 @@ body::after {
 .marquee-promo .track .text-white {
     color: #ffffff;
     padding-right: 60px;
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+    text-shadow: 
+        0 0 10px rgba(251, 191, 36, 0.9),
+        0 0 20px rgba(212, 175, 55, 0.6);
 }
 
 .marquee-promo .track .spacer {
@@ -255,8 +238,11 @@ body::after {
     margin: 0 auto 18px auto;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    box-shadow: 0 8px 50px rgba(0,0,0,0.5), 0 0 60px rgba(168, 85, 247, 0.15);
+    border: 2px solid rgba(212, 175, 55, 0.7);
+    box-shadow: 
+        0 8px 60px rgba(0,0,0,0.6), 
+        0 0 80px rgba(212, 175, 55, 0.4),
+        0 0 120px rgba(59, 130, 246, 0.25);
     aspect-ratio: 654 / 216;
 }
 
@@ -284,10 +270,10 @@ body::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(10, 14, 39, 0.7);
+    background: rgba(5, 5, 16, 0.85);
     backdrop-filter: blur(5px);
     color: #fff;
-    border: 1px solid rgba(251, 191, 36, 0.3);
+    border: 1.5px solid rgba(212, 175, 55, 0.7);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -301,9 +287,9 @@ body::after {
 }
 
 .slider-arrow:hover {
-    background: rgba(251, 191, 36, 0.3);
+    background: rgba(212, 175, 55, 0.5);
     border-color: #fbbf24;
-    box-shadow: 0 0 25px rgba(251, 191, 36, 0.6);
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.9);
 }
 
 .slider-arrow.prev {
@@ -322,15 +308,18 @@ body::after {
     margin-top: 10px;
 }
 
-/* ===== KARTU PREDIKSI ===== */
+/* ===== KARTU PREDIKSI - ROYAL BLUE + GOLD ===== */
 .card-wrapper {
-    background: linear-gradient(145deg, rgba(20, 15, 50, 0.95), rgba(30, 20, 70, 0.95));
+    background: linear-gradient(145deg, rgba(10, 18, 48, 0.95), rgba(30, 58, 138, 0.92));
     backdrop-filter: blur(15px);
     border-radius: 12px;
-    border: 1px solid rgba(168, 85, 247, 0.25);
+    border: 1.5px solid rgba(212, 175, 55, 0.5);
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 0 30px rgba(168, 85, 247, 0.05);
+    box-shadow: 
+        0 4px 25px rgba(0,0,0,0.45), 
+        0 0 40px rgba(212, 175, 55, 0.2),
+        inset 0 0 40px rgba(30, 58, 138, 0.3);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -344,9 +333,9 @@ body::after {
     inset: 0;
     background: linear-gradient(135deg, 
         transparent 0%, 
-        rgba(168, 85, 247, 0.08) 30%, 
+        rgba(251, 191, 36, 0.12) 30%, 
         transparent 60%, 
-        rgba(59, 130, 246, 0.06) 100%);
+        rgba(212, 175, 55, 0.10) 100%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.4s;
@@ -357,12 +346,13 @@ body::after {
 }
 
 .card-wrapper:hover {
-    border-color: rgba(251, 191, 36, 0.5);
-    transform: translateY(-4px);
+    border-color: rgba(251, 191, 36, 0.95);
+    transform: translateY(-5px);
     box-shadow: 
-        0 8px 40px rgba(0,0,0,0.5), 
-        0 0 60px rgba(168, 85, 247, 0.25),
-        0 0 100px rgba(251, 191, 36, 0.1);
+        0 10px 50px rgba(0,0,0,0.6), 
+        0 0 70px rgba(212, 175, 55, 0.5),
+        0 0 110px rgba(59, 130, 246, 0.4),
+        0 0 150px rgba(251, 191, 36, 0.2);
 }
 
 .card {
@@ -378,11 +368,13 @@ body::after {
 
 .card .nama {
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
     color: #fbbf24;
     letter-spacing: 0.5px;
     margin-bottom: 4px;
-    text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+    text-shadow: 
+        0 0 15px rgba(251, 191, 36, 0.9),
+        0 0 30px rgba(212, 175, 55, 0.5);
 }
 
 .card .nama .flag {
@@ -393,63 +385,61 @@ body::after {
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .card .label-tutup.buka {
-    color: #44ff88;
-    text-shadow: 0 0 15px rgba(68, 255, 136, 0.5);
+    color: #4ade80;
+    text-shadow: 0 0 15px rgba(74, 222, 128, 0.9), 0 0 30px rgba(34, 197, 94, 0.5);
 }
 
 .card .label-tutup.tutup {
-    color: #ef4444;
-    text-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+    color: #fb7185;
+    text-shadow: 0 0 15px rgba(251, 113, 133, 0.9), 0 0 30px rgba(225, 29, 72, 0.5);
 }
 
 .card .angka-4d {
     font-size: 26px;
-    font-weight: 800;
-    color: #ffffff;
+    font-weight: 900;
     letter-spacing: 3px;
     margin: 2px 0;
-    text-shadow: 
-        0 0 15px rgba(168, 85, 247, 0.6),
-        0 0 30px rgba(59, 130, 246, 0.4),
-        0 0 45px rgba(251, 191, 36, 0.2);
-    background: linear-gradient(180deg, #ffffff 0%, #e0e7ff 60%, #c7d2fe 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #fef3c7 35%, #fbbf24 70%, #d4af37 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
 }
 
 .card .angka-3d {
     font-size: 15px;
-    font-weight: 600;
-    color: #a8a8d8;
+    font-weight: 700;
+    color: #93c5fd;
     letter-spacing: 2px;
     margin: 1px 0;
+    text-shadow: 0 0 10px rgba(147, 197, 253, 0.7);
 }
 
 .card .angka-2d {
     font-size: 14px;
-    font-weight: 600;
-    color: #8a8ab0;
+    font-weight: 700;
+    color: #bfdbfe;
     letter-spacing: 2px;
     margin: 1px 0;
+    text-shadow: 0 0 10px rgba(191, 219, 254, 0.6);
 }
 
 .card .shio {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     color: #fbbf24;
     margin: 2px 0;
-    text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.8), 0 0 30px rgba(212, 175, 55, 0.5);
 }
 
 .card .extra-detail {
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid rgba(168, 85, 247, 0.15);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
     font-size: 12px;
     line-height: 1.8;
     text-align: left;
@@ -462,47 +452,54 @@ body::after {
 }
 
 .card .extra-detail .label {
-    color: #8a8ab0;
+    color: #93c5fd;
 }
 
 .card .extra-detail .value {
     color: #fbbf24;
-    font-weight: 600;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
 }
 
 .card .jam {
     font-size: 11px;
-    color: #6a6a8a;
+    color: #94a3b8;
     margin-top: 2px;
 }
 
 .card .jam .buka-jam {
-    color: #44ff88;
+    color: #4ade80;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
 }
 
 .card .jam .tutup-jam {
-    color: #ef4444;
+    color: #fb7185;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(251, 113, 133, 0.6);
 }
 
-/* ===== MARQUEE LINK (SEBELUM JADWAL) ===== */
+/* ===== MARQUEE LINK ===== */
 .marquee-link {
     margin-top: 30px;
     margin-bottom: 10px;
-    background: linear-gradient(135deg, rgba(168, 85, 247, 0.30), rgba(59, 130, 246, 0.30));
+    background: rgba(5, 10, 35, 0.8);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(168, 85, 247, 0.4);
+    border: 1.5px solid rgba(212, 175, 55, 0.5);
     border-radius: 8px;
     padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
-    box-shadow: 0 4px 40px rgba(168, 85, 247, 0.25);
+    box-shadow: 
+        0 4px 50px rgba(212, 175, 55, 0.3),
+        0 0 80px rgba(30, 58, 138, 0.3);
 }
 
 .marquee-link .track-link {
     display: inline-block;
     animation: scrollLink 30s linear infinite;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.3px;
 }
 
@@ -513,18 +510,19 @@ body::after {
     transition: all 0.3s ease;
     padding: 4px 10px;
     border-radius: 4px;
-    border: 1px solid rgba(251, 191, 36, 0.35);
+    border: 1.5px solid rgba(212, 175, 55, 0.6);
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.7);
 }
 
 .marquee-link .link-item:hover {
-    color: #ffffff;
-    background: rgba(251, 191, 36, 0.2);
-    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+    color: #050510;
+    background: #fbbf24;
+    text-shadow: none;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.9);
 }
 
 .marquee-link .link-spacer {
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.5);
     font-weight: 300;
 }
 
@@ -536,27 +534,31 @@ body::after {
 /* ===== JADWAL PASARAN SECTION ===== */
 .jadwal-section {
     margin-top: 10px;
-    background: linear-gradient(145deg, rgba(20, 15, 50, 0.9), rgba(30, 20, 70, 0.9));
+    background: linear-gradient(145deg, rgba(10, 18, 48, 0.95), rgba(30, 58, 138, 0.92));
     backdrop-filter: blur(15px);
     border-radius: 12px;
-    border: 1px solid rgba(168, 85, 247, 0.25);
+    border: 1.5px solid rgba(212, 175, 55, 0.5);
     overflow: hidden;
     padding: 16px 14px;
-    box-shadow: 0 4px 40px rgba(0,0,0,0.3), inset 0 0 30px rgba(168, 85, 247, 0.05);
+    box-shadow: 
+        0 4px 40px rgba(0,0,0,0.45), 
+        0 0 60px rgba(212, 175, 55, 0.25),
+        inset 0 0 40px rgba(30, 58, 138, 0.3);
 }
 
 .jadwal-section .title {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 800;
     color: #fbbf24;
     text-align: center;
     margin-bottom: 12px;
     letter-spacing: 1px;
-    text-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 40px rgba(212, 175, 55, 0.5);
 }
 
 .jadwal-section .title span {
     color: #ffffff;
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
 .jadwal-table {
@@ -568,18 +570,19 @@ body::after {
 .jadwal-table th {
     text-align: left;
     padding: 8px 6px;
-    color: #a8a8c8;
-    font-weight: 600;
-    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    color: #93c5fd;
+    font-weight: 700;
+    border-bottom: 1.5px solid rgba(212, 175, 55, 0.4);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(147, 197, 253, 0.5);
 }
 
 .jadwal-table td {
     padding: 8px 6px;
-    border-bottom: 1px solid rgba(168, 85, 247, 0.08);
-    color: #cbd5e1;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    color: #e0e7ff;
 }
 
 .jadwal-table tr:last-child td {
@@ -587,20 +590,21 @@ body::after {
 }
 
 .jadwal-table .nama-pasaran {
-    font-weight: 700;
+    font-weight: 800;
     color: #fbbf24;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
 }
 
 .jadwal-table .status-buka {
-    color: #44ff88;
-    font-weight: 600;
-    text-shadow: 0 0 10px rgba(68, 255, 136, 0.4);
+    color: #4ade80;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.8);
 }
 
 .jadwal-table .status-tutup {
-    color: #ef4444;
-    font-weight: 600;
-    text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    color: #fb7185;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(251, 113, 133, 0.8);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -639,7 +643,7 @@ body::after {
         width: 20px; 
         height: 20px; 
         font-size: 10px;
-        opacity: 0.7;
+        opacity: 0.85;
     }
     .slider-arrow.prev { left: 5px; }
     .slider-arrow.next { right: 5px; }
@@ -649,10 +653,8 @@ body::after {
 </head>
 <body>
 
-<!-- ORB TAMBAHAN UNTUK BACKGROUND -->
-<div class="orb-extra o1"></div>
-<div class="orb-extra o2"></div>
-<div class="orb-extra o3"></div>
+<!-- GOLD LINE ATAS BERJALAN -->
+<div class="gold-line"></div>
 
 <div class="container">
 
@@ -763,7 +765,7 @@ body::after {
 
 <script>
 // ============================================================
-// SLIDER BANNER - TANPA DOTS
+// SLIDER BANNER
 // ============================================================
 const sliderWrapper = document.getElementById('sliderWrapper');
 const slides = document.querySelectorAll('.slide');
@@ -871,9 +873,8 @@ function cekStatusPasaran(p) {
 }
 
 // ============================================================
-// RANDOM SEED - PAKAI CRYPTO UNTUK ACak BENAR-BENAR
+// RANDOM SEED - PAKAI CRYPTO
 // ============================================================
-// Seed disimpan per hari, jadi angka konsisten 1 hari tapi acak antar pasaran
 let dailySeed = 0;
 let currentSeedDate = '';
 
@@ -881,7 +882,6 @@ function generateDailySeed() {
     const today = new Date().toISOString().slice(0, 10);
     if (currentSeedDate === today) return dailySeed;
     
-    // Generate random seed dari crypto untuk hari ini
     const randomBuffer = new Uint32Array(1);
     crypto.getRandomValues(randomBuffer);
     dailySeed = randomBuffer[0];
@@ -891,8 +891,6 @@ function generateDailySeed() {
     return dailySeed;
 }
 
-// Pseudo-random generator dengan seed harian + index pasaran
-// Menggunakan mulberry32 - cepat & distribusi bagus
 function mulberry32(seed) {
     return function() {
         seed |= 0;
@@ -904,15 +902,13 @@ function mulberry32(seed) {
 }
 
 // ============================================================
-// GENERATE ANGKA 4D YANG BENAR-BENAR ACAK
+// GENERATE ANGKA 4D ACAK
 // ============================================================
 function generateAngka4D(pasaranIndex) {
-    // Pakai seed harian + kombinasi id pasaran
     const baseSeed = generateDailySeed();
-    const seed = baseSeed ^ (pasaranIndex * 0x9E3779B9); // XOR dengan golden ratio hash
+    const seed = baseSeed ^ (pasaranIndex * 0x9E3779B9);
     const rng = mulberry32(seed);
     
-    // Generate 4 digit berbeda (boleh ada yang sama, itu wajar di togel)
     const digits = [];
     for (let i = 0; i < 4; i++) {
         digits.push(Math.floor(rng() * 10));
@@ -1025,7 +1021,7 @@ function updateTime() {
 }
 
 // ============================================================
-// CEK PERGANTIAN HARI UNTUK REFRESH OTOMATIS
+// CEK PERGANTIAN HARI
 // ============================================================
 let lastDate = new Date().toISOString().slice(0,10);
 
@@ -1033,9 +1029,7 @@ function checkDayChange() {
     const today = new Date().toISOString().slice(0,10);
     if (today !== lastDate) {
         console.log('🔄 Hari berganti! Refresh prediksi dengan angka baru...');
-        console.log('📅 Hari ini:', new Date().toLocaleDateString('id-ID', { weekday: 'long' }));
         lastDate = today;
-        // Reset seed agar angka baru di-generate
         currentSeedDate = '';
         generateDailySeed();
         renderCards();
@@ -1046,27 +1040,22 @@ function checkDayChange() {
 // ============================================================
 // INIT
 // ============================================================
-generateDailySeed(); // Generate seed untuk hari ini
+generateDailySeed();
 renderCards();
 renderJadwal();
 updateTime();
 
-// UPDATE JAM SETIAP DETIK
 setInterval(updateTime, 1000);
-
-// Cek perubahan hari setiap 30 detik
 setInterval(checkDayChange, 30000);
 
-// Refresh status setiap 1 menit (BUKA/TUTUP) - angka tetap sama karena seed harian
 setInterval(() => {
     renderCards();
     renderJadwal();
 }, 60000);
 
-console.log('✅ Angka prediksi di-generate acak dari crypto seed harian');
-console.log('✅ Angka konsisten 1 hari, berubah otomatis saat ganti hari');
-console.log('📅 Tanggal saat ini:', new Date().toISOString().slice(0,10));
-console.log('📅 Hari ini:', new Date().toLocaleDateString('id-ID', { weekday: 'long' }));
+console.log('👑 Tema Royal Blue + Gold aktif');
+console.log('✅ Angka prediksi acak dari crypto seed harian');
+console.log('📅 Tanggal:', new Date().toISOString().slice(0,10));
 </script>
 
 </body>
